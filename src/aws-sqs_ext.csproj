@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Deterministic>false</Deterministic>
@@ -17,8 +17,8 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="OutSystems.ExternalLibraries.SDK" Version="*" />
-    <PackageReference Include="Newtonsoft.Json" Version="*" />
-    <PackageReference Include="AWSSDK.SQS" Version="3.7.200" />
+    <PackageReference Include="OutSystems.ExternalLibraries.SDK" Version="1.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
+    <PackageReference Include="AWSSDK.SQS" Version="4.0.100.21" />
   </ItemGroup>
 </Project>

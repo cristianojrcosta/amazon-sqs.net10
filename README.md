@@ -78,6 +78,38 @@ To receive a message, you will also need the _queueURL_ which is obtained when t
 
 ![Receive message example](doc/images/receive_message_example.png)
 
+## Building the external library (.NET 10)
+
+This library targets `net10.0`, as required by ODC for custom code.
+
+Prerequisite: [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0).
+
+From the `src` folder run:
+
+```bash
+dotnet publish -c Release -r linux-x64 --no-self-contained
+```
+
+Then zip the **contents** of `src/bin/Release/net10.0/linux-x64/publish/` (not the folder itself) so the DLLs sit at the root of the ZIP, and upload it in the ODC Portal. Delete any previous `publish` folder and ZIP before rebuilding so stale files are not included.
+
+Linux / macOS:
+
+```bash
+cd src
+rm -rf bin obj ../AWS_SQS_ExternalLogic.zip
+dotnet publish -c Release -r linux-x64 --no-self-contained
+(cd bin/Release/net10.0/linux-x64/publish && zip -r ../../../../../../AWS_SQS_ExternalLogic.zip .)
+```
+
+Windows (PowerShell):
+
+```powershell
+cd src
+Remove-Item -Recurse -Force bin, obj, ..\AWS_SQS_ExternalLogic.zip -ErrorAction SilentlyContinue
+dotnet publish -c Release -r linux-x64 --no-self-contained
+Compress-Archive -Path bin\Release\net10.0\linux-x64\publish\* -DestinationPath ..\AWS_SQS_ExternalLogic.zip
+```
+
 ## Limitation
 
 1. Only text messages are allowed. If you need to send binary data, you might want to encode it as base64 before sending

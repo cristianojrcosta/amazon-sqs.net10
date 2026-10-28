@@ -178,6 +178,11 @@ namespace psn.PH
             if (receiveMessageResponse.HttpStatusCode == System.Net.HttpStatusCode.OK)
             {
                 var result = new List<SQS_Message>();
+                // AWSSDK v4: collections are null (not empty) when the service returns none
+                if (receiveMessageResponse.Messages == null)
+                {
+                    return result;
+                }
                 foreach (var message in receiveMessageResponse.Messages)
                 {
                     var msg = new SQS_Message()
@@ -188,6 +193,11 @@ namespace psn.PH
                         MessageAttributes = new List<SQS_MessageAttribute>(),
                     };
 
+                    if (message.MessageAttributes == null)
+                    {
+                        result.Add(msg);
+                        continue;
+                    }
                     foreach (var key in message.MessageAttributes.Keys)
                     {
                         MessageAttributeValue ma = new MessageAttributeValue();
