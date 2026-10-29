@@ -1,5 +1,7 @@
 # AWS SQS (Black Belt Edition) for ODC
 
+> **Notice:** This is an unsupported fork, migrated to .NET 10 only. No support is provided. See [Support](#support).
+
 ## Introduction
 
 OutSystems Developer Cloud (ODC) is a cloud-native app development platform that provides a modular, scalable environment in which you develop and deploy your apps. With ODC you can build and deploy enterprise-grade, mission-critical apps in weeks. You can build web apps, web portals, mobile apps, and business workflows faster than with traditional development tools. You can then deploy your apps in a scalable, secure, and high-performance environment.
@@ -115,10 +117,14 @@ Compress-Archive -Path bin\Release\net10.0\linux-x64\publish\* -DestinationPath 
 1. Only text messages are allowed. If you need to send binary data, you might want to encode it as base64 before sending
 2. The maximum payload sent/receive is 5.5 MB
 
-## Found a bug?
+## Support
 
-Kindly submit your bug report [here](https://github.com/PaulHoOutsystems/amazon-sqs/issues) and do indicate the build number of the library which you are using too.
+This repository is a fork of the original [AWS SQS connector by Paul Ho](https://github.com/PaulHoOutsystems/amazon-sqs). It was migrated to .NET 10 only, so that it keeps running on ODC after the end of .NET 8 support for custom code.
 
-## Contact
+The component is provided as is. It is not supported or maintained. Do not open issues, send pull requests, or contact the maintainer of this repository or the original author for support, bug fixes, or feature requests, as these will not be answered.
 
-You can reach out to me via email at paul.ho@outsystems.com
+If you use this component, you are responsible for testing it in your own environment and for any changes you need.
+
+## Credits
+
+Original component by Paul Ho. .NET 10 migration by Cristiano Costa.
